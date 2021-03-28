@@ -2,10 +2,13 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
+    <UserSecretsId>e335491b-ff16-4a9b-a301-0d91f696efe4</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\CK.Lum.Material.Api.Transport\CK.Lum.Material.Api.Transport.csproj" />
+    <ProjectReference Include="..\CK.Lum.Material.Application\CK.Lum.Material.Application.csproj" />
+    <ProjectReference Include="..\CK.Lum.Material.Data\CK.Lum.Material.Data.csproj" />
     <ProjectReference Include="..\CK.Lum.Material.Domain\CK.Lum.Material.Domain.csproj" />
   </ItemGroup>
 

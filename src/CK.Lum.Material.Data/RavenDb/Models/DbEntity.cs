@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CK.Lum.Material.Domain.Models
+namespace CK.Lum.Material.Data.RavenDb.Models
 {
-    public enum PhaseType
+    public abstract class DbEntity
     {
-        solid,
-        liqud
+        public string Id { get; set; }
     }
 }

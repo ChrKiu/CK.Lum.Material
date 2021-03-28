@@ -8,8 +8,8 @@ namespace CK.Lum.Material.Api.Transport
 {
     public class MaterialFunctionDto
     {
-        public int MinTemperature { get; set; }
+        public int? MinTemperature { get; set; }
 
-        public int MaxTemperature { get; set; }
+        public int? MaxTemperature { get; set; }
     }
 }

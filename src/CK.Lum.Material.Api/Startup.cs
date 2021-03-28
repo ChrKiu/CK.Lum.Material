@@ -1,4 +1,5 @@
 using CK.Lum.Material.Api.Extensions;
+using CK.Lum.Material.Data.ServiceBuilderExtensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -27,7 +28,15 @@ namespace CK.Lum.Material.Api
         {
             services.AddControllers();
 
-            services.ConfigureApplicationServices();   
+            services.ConfigureApplicationServices();
+
+            services.ConfigureDomainBuilders();
+
+            services.ConfigureConfigurations();
+
+            services.ConfigureRepositories();
+            services.ConfigureMapper();
+            services.ConfigureDbContexts();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

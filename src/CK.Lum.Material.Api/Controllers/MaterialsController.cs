@@ -26,7 +26,8 @@ namespace CK.Lum.Material.Api.Controllers
         [HttpGet("{id}")]
         public IActionResult GetMaterialById(string id)
         {
-            var material = _materialService.GetMaterialById(id);
+            var decodedId = System.Web.HttpUtility.UrlDecode(id);
+            var material = _materialService.GetMaterialById(decodedId);
             return Ok(material);
         }
 
@@ -75,7 +76,8 @@ namespace CK.Lum.Material.Api.Controllers
         [HttpDelete("{id}")]
         public IActionResult DeleteMaterial(string id)
         {
-            _materialService.DeleteMaterial(id);
+            var decodedId = System.Web.HttpUtility.UrlDecode(id);
+            _materialService.DeleteMaterial(decodedId);
             return Ok();
         }
     }

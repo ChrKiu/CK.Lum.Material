@@ -8,8 +8,14 @@ namespace CK.Lum.Material.Domain.Models.MaterialAggregate
 {
     public class MaterialFunction
     {
-        public int MinTemperature { get; private set; }
+        public int? MinTemperature { get; private set; }
 
-        public int MaxTemperature { get; private set; }
+        public int? MaxTemperature { get; private set; }
+
+        public MaterialFunction(int? minTemperature, int? maxTemperature)
+        {
+            MinTemperature = minTemperature;
+            MaxTemperature = maxTemperature;
+        }
     }
 }
