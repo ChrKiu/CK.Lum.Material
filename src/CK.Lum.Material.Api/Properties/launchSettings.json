@@ -19,8 +19,8 @@
     },
     "CK.Lum.Material.Api": {
       "commandName": "Project",
-      "launchBrowser": true,
-      "launchUrl": "weatherforecast",
+      "launchBrowser": false,
+      "launchUrl": "materials",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
