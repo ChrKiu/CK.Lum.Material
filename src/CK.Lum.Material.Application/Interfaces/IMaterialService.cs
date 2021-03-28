@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CK.Lum.Material.Domain;
+﻿using System.Collections.Generic;
 
 using MaterialModel = CK.Lum.Material.Domain.Models.MaterialAggregate.Material;
 

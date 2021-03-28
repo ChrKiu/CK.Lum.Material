@@ -1,16 +1,14 @@
 ﻿using AutoMapper;
 using CK.Lum.Material.Data.RavenDb.Models;
 using CK.Lum.Material.Domain.Models.MaterialAggregate;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using MaterialModel = CK.Lum.Material.Domain.Models.MaterialAggregate.Material;
 
 namespace CK.Lum.Material.Data.Mapping
 {
+    /// <summary>
+    /// Mapping profile for automapper
+    /// </summary>
     public class MaterialProfile : Profile
     {
         public MaterialProfile()

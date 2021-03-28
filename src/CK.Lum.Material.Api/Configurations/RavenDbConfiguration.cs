@@ -1,7 +1,6 @@
 ﻿using CK.Lum.Material.Data.RavenDb;
 using Microsoft.Extensions.Configuration;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace CK.Lum.Material.Api.Configurations
 {

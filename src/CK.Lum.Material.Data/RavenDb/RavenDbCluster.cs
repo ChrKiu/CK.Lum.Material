@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CK.Lum.Material.Data.RavenDb
+﻿namespace CK.Lum.Material.Data.RavenDb
 {
+    /// <summary>
+    /// A cluster of a RavenDB, contains the <paramref name="Url"/>
+    /// </summary>
     public class RavenDbCluster
     {
         public string Url { get; set; }

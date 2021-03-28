@@ -10,17 +10,20 @@ using MaterialModel = CK.Lum.Material.Domain.Models.MaterialAggregate.Material;
 
 namespace CK.Lum.Material.Data.Repositories
 {
+    ///<inheritdoc/>
     public class MaterialRepository : IMaterialRepository
     {
         private readonly RavenDbContext _ravenDbContext;
         private readonly IMapper _mapper;
 
+        ///<inheritdoc/>
         public MaterialRepository(RavenDbContext ravenDbContext, IMapper mapper)
         {
             _ravenDbContext = ravenDbContext ?? throw new ArgumentNullException(nameof(ravenDbContext));
             _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
         }
 
+        ///<inheritdoc/>
         public MaterialModel Create(MaterialModel material)
         {
             var mappedMaterial = _mapper.Map<MaterialDbo>(material);
@@ -29,11 +32,13 @@ namespace CK.Lum.Material.Data.Repositories
             return _mapper.Map<MaterialModel>(createdMaterial);
         }
 
+        ///<inheritdoc/>
         public bool Delete(string id)
         {
             return _ravenDbContext.DeleteMaterial(id);
         }
 
+        ///<inheritdoc/>
         public IEnumerable<MaterialModel> GetAll()
         {
             var materialDbos = _ravenDbContext.GetAllMaterials();
@@ -41,6 +46,7 @@ namespace CK.Lum.Material.Data.Repositories
             return _mapper.Map<IEnumerable<MaterialModel>>(materialDbos);
         }
 
+        ///<inheritdoc/>
         public IEnumerable<MaterialModel> Get(Expression<Func<MaterialModel, bool>> expression)
         {
             var mappedExpression = _mapper.Map<Expression<Func<MaterialDbo, bool>>>(expression);
@@ -50,6 +56,7 @@ namespace CK.Lum.Material.Data.Repositories
             return _mapper.Map<IEnumerable<MaterialModel>>(materialDbos);
         }
 
+        ///<inheritdoc/>
         public MaterialModel Update(MaterialModel material)
         {
             throw new NotImplementedException();

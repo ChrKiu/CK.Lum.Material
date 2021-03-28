@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace CK.Lum.Material.Data.RavenDb.Models
 {
+    /// <summary>
+    /// Data base object, which is written and fetched into/from the Database
+    /// </summary>
     public class MaterialDbo : DbEntity
     {
         public string Name { get; set; }

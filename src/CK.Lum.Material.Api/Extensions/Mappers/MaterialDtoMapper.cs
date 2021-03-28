@@ -2,6 +2,9 @@
 
 namespace CK.Lum.Material.Api.Extensions.Mappers
 {
+    /// <summary>
+    /// Extensionmethod to create a mapping between <see cref="Domain.Models.MaterialAggregate.Material"/> and <see cref="MaterialDto"/>
+    /// </summary>
     public static class MaterialDtoMapper
     {
         public static MaterialDto MapToMaterialDto(this Domain.Models.MaterialAggregate.Material material)

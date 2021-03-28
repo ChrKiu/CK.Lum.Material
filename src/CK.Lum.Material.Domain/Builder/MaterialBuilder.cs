@@ -6,6 +6,7 @@ using System.Collections.Generic;
 
 namespace CK.Lum.Material.Domain.Builder
 {
+    ///<inheritdoc/>
     public class MaterialBuilder : IMaterialBuilder
     {
         private readonly MaterialValidator _materialValidator;
@@ -23,6 +24,7 @@ namespace CK.Lum.Material.Domain.Builder
             _materialValidator = materialValidator ?? throw new ArgumentNullException(nameof(materialValidator));
         }
 
+        ///<inheritdoc/>
         public MaterialBuilderResult BuildMaterial()
         {
             var createdMaterial = Material.Domain.Models.MaterialAggregate.Material.CreateMaterial(Name, IsVisible, TypeOfPhase, MaterialFunction);
@@ -48,21 +50,25 @@ namespace CK.Lum.Material.Domain.Builder
             return builderResult;
         }
 
+        ///<inheritdoc/>
         public void SetMaterialFunction(int? maxTemperature, int? minTemperature)
         {
             MaterialFunction = new MaterialFunction(minTemperature, maxTemperature);
         }
 
+        ///<inheritdoc/>
         public void SetVisibility(bool? isVisible)
         {
             IsVisible = isVisible;
         }
 
+        ///<inheritdoc/>
         public void SetMaterialName(string name)
         {
             Name = name;
         }
 
+        ///<inheritdoc/>
         public void SetTypeOfPhase(string typeOfPhase)
         {
             if (Enum.TryParse(typeof(PhaseType), typeOfPhase, true, out object result))
@@ -71,6 +77,7 @@ namespace CK.Lum.Material.Domain.Builder
             }
         }
 
+        ///<inheritdoc/>
         private void CleanUp()
         {
             Name = string.Empty;

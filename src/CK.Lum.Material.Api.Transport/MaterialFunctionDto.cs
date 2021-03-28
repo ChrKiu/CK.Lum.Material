@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CK.Lum.Material.Api.Transport
+﻿namespace CK.Lum.Material.Api.Transport
 {
+    /// <summary>
+    /// Transferobject which the user sends and receives
+    /// </summary>
     public class MaterialFunctionDto
     {
         public int? MinTemperature { get; set; }

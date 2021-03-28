@@ -8,6 +8,9 @@ using System.Linq.Expressions;
 
 namespace CK.Lum.Material.Data.RavenDb
 {
+    /// <summary>
+    /// Database context, used to connect and manipulate the database
+    /// </summary>
     public class RavenDbContext
     {
         private readonly IRavenDbConfiguration _ravenDbConfiguration;

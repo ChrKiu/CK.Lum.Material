@@ -6,6 +6,9 @@ namespace CK.Lum.Material.Api.Extensions
 {
     internal static class ApplicationServiceBuilderExtension
     {
+        /// <summary>
+        /// Adds all services to the dependency container
+        /// </summary>
         internal static IServiceCollection ConfigureApplicationServices(this IServiceCollection services)
         {
             services.AddScoped<IMaterialService, MaterialService>();

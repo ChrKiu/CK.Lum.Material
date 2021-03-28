@@ -11,6 +11,11 @@ namespace CK.Lum.Material.Data.ServiceBuilderExtensions
 {
     public static class ServiceBuilderExtension
     {
+        /// <summary>
+        /// Adds the database contexts to the dependency container
+        /// </summary>
+        /// <param name="services"></param>
+        /// <returns></returns>
         public static IServiceCollection ConfigureDbContexts(this IServiceCollection services)
         {
             services.AddSingleton<RavenDbContext>();
@@ -18,6 +23,11 @@ namespace CK.Lum.Material.Data.ServiceBuilderExtensions
             return services;
         }
 
+        /// <summary>
+        /// Adds all repositories to the dependency container
+        /// </summary>
+        /// <param name="services"></param>
+        /// <returns></returns>
         public static IServiceCollection ConfigureRepositories(this IServiceCollection services)
         {
             services.AddScoped<IMaterialRepository, MaterialRepository>();
@@ -25,6 +35,11 @@ namespace CK.Lum.Material.Data.ServiceBuilderExtensions
             return services;
         }
 
+        /// <summary>
+        /// Adds the automapper to the depedency container
+        /// </summary>
+        /// <param name="services"></param>
+        /// <returns></returns>
         public static IServiceCollection ConfigureMapper(this IServiceCollection services)
         {
             var config = new MapperConfiguration(cfg => {
