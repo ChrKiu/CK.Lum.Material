@@ -57,9 +57,11 @@ namespace CK.Lum.Material.Data.Repositories
         }
 
         ///<inheritdoc/>
-        public MaterialModel Update(MaterialModel material)
+        public MaterialModel Update(string id, MaterialModel material)
         {
-            throw new NotImplementedException();
+            var mappedMaterial = _mapper.Map<MaterialDbo>(material);
+            var materialDbo = _ravenDbContext.UpdateMaterial(id, mappedMaterial);
+            return _mapper.Map<MaterialModel>(materialDbo);
         }
     }
 }

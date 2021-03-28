@@ -67,7 +67,7 @@ namespace CK.Lum.Material.Application.Services
 
             if (builderResult.IsValid)
             {
-                return (_materialRepository.Update(builderResult.Material), new List<string>());
+                return (_materialRepository.Update(id, builderResult.Material), new List<string>());
             }
 
             return (builderResult.Material, builderResult.ErrorMessages);

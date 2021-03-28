@@ -37,11 +37,11 @@ namespace CK.Lum.Material.Data.RavenDb
             _store = store.Initialize();
         }
 
-        public MaterialDbo UpdateMaterial(MaterialDbo material)
+        public MaterialDbo UpdateMaterial(string id, MaterialDbo material)
         {
             using (var session = _store.OpenSession())
             {
-                var dbMaterial = session.Load<MaterialDbo>(material.Id);
+                var dbMaterial = session.Load<MaterialDbo>(id);
 
                 dbMaterial.IsVisible = material.IsVisible;
                 dbMaterial.MaterialFunction = material.MaterialFunction;

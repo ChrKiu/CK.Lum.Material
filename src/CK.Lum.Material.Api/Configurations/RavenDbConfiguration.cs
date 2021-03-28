@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 namespace CK.Lum.Material.Api.Configurations
 {
+    ///<inheritdoc/>
     public class RavenDbConfiguration : IRavenDbConfiguration
     {
         public string RavenDbName { get; private set; }

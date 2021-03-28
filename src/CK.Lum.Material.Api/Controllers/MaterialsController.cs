@@ -71,7 +71,8 @@ namespace CK.Lum.Material.Api.Controllers
         [HttpPut("{id}")]
         public IActionResult UpdateMaterial(string id, [FromBody] MaterialDto material)
         {
-            var updateResult = _materialService.UpdateMaterial(id, material.Name, material.IsVisible, material.TypeOfPhase, material.MaterialFunction.MinTemperature, material.MaterialFunction.MaxTemperature);
+            var decodedId = System.Web.HttpUtility.UrlDecode(id);
+            var updateResult = _materialService.UpdateMaterial(decodedId, material.Name, material.IsVisible, material.TypeOfPhase, material.MaterialFunction.MinTemperature, material.MaterialFunction.MaxTemperature);
             if (updateResult.errorMessages.Any())
             {
                 return UnprocessableEntity(updateResult.errorMessages);

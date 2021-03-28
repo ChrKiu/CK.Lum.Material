@@ -34,7 +34,7 @@ namespace CK.Lum.Material.Domain.Models.MaterialAggregate
         /// </summary>
         /// <param name="material">Every value gets changed to the value in the parameter</param>
         /// <returns></returns>
-        Material Update(Material material);
+        Material Update(string id, Material material);
 
         /// <summary>
         /// Deletes a <see cref="Material"/>
