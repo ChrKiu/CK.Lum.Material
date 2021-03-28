@@ -4,4 +4,9 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\CK.Lum.Material.Api.Transport\CK.Lum.Material.Api.Transport.csproj" />
+    <ProjectReference Include="..\CK.Lum.Material.Domain\CK.Lum.Material.Domain.csproj" />
+  </ItemGroup>
+
 </Project>
