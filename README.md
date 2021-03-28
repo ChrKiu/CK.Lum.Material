@@ -1,5 +1,7 @@
 # CK.Lum.Material
 
+Connection values to the DB have to be set in appsettings.json
+
 Api Calls:
 
 ##Get all Material
