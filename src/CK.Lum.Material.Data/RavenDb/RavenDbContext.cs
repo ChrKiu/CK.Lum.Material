@@ -26,32 +26,49 @@ namespace CK.Lum.Material.Data.RavenDb
 
         private void Initialize()
         {
-            var dbClusters = _ravenDbConfiguration.RavenDbClusters.Select(ri => ri.Url);
-
-            var store = new DocumentStore
+            try
             {
-                Urls = dbClusters.ToArray(),
-                Database = _ravenDbConfiguration.RavenDbName,
-                Conventions = { }
-            };
-            _store = store.Initialize();
+                var dbClusters = _ravenDbConfiguration.RavenDbClusters.Select(ri => ri.Url);
+
+                var store = new DocumentStore
+                {
+                    Urls = dbClusters.ToArray(),
+                    Database = _ravenDbConfiguration.RavenDbName,
+                    Conventions = { }
+                };
+                _store = store.Initialize();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            
         }
 
         public MaterialDbo UpdateMaterial(string id, MaterialDbo material)
         {
-            using (var session = _store.OpenSession())
+            try
             {
-                var dbMaterial = session.Load<MaterialDbo>(id);
+                using (var session = _store.OpenSession())
+                {
+                    var dbMaterial = session.Load<MaterialDbo>(id);
 
-                dbMaterial.IsVisible = material.IsVisible;
-                dbMaterial.MaterialFunction = material.MaterialFunction;
-                dbMaterial.Name = material.Name;
-                dbMaterial.TypeOfPhase = material.TypeOfPhase;
+                    dbMaterial.IsVisible = material.IsVisible;
+                    dbMaterial.MaterialFunction = material.MaterialFunction;
+                    dbMaterial.Name = material.Name;
+                    dbMaterial.TypeOfPhase = material.TypeOfPhase;
 
-                session.SaveChanges();
+                    session.SaveChanges();
 
-                return dbMaterial;
+                    return dbMaterial;
+                }
             }
+            catch (Exception)
+            {
+                throw;
+            }
+            
         }
 
         public bool DeleteMaterial(string id)
@@ -78,41 +95,68 @@ namespace CK.Lum.Material.Data.RavenDb
 
         public MaterialDbo CreateMaterial(MaterialDbo material)
         {
-            using (IDocumentSession session = _store.OpenSession())
+            try
             {
-                session.Store(material);                            
+                using (IDocumentSession session = _store.OpenSession())
+                {
+                    session.Store(material);
 
-                session.SaveChanges();
+                    session.SaveChanges();
+                }
+
+                return material;
             }
+            catch (Exception)
+            {
 
-            return material;
+                throw;
+            }
+            
         }
 
         public IEnumerable<MaterialDbo> GetAllMaterials()
         {
-            using (IDocumentSession session = _store.OpenSession())  
+            try
             {
-                List<MaterialDbo> materials = session
-                    .Query<MaterialDbo>()                           
-                    .Select(m => m) 
-                    .ToList();
+                using (IDocumentSession session = _store.OpenSession())
+                {
+                    List<MaterialDbo> materials = session
+                        .Query<MaterialDbo>()
+                        .Select(m => m)
+                        .ToList();
 
-                return materials;
+                    return materials;
+                }
             }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            
         }
 
         public IEnumerable<MaterialDbo> GetMaterials(Expression<Func<MaterialDbo, bool>> expression)
         {
-            using (IDocumentSession session = _store.OpenSession())
+            try
             {
-                List<MaterialDbo> materials = session
-                    .Query<MaterialDbo>()
-                    .Where(expression)  
-                    .Select(m => m)
-                    .ToList();
+                using (IDocumentSession session = _store.OpenSession())
+                {
+                    List<MaterialDbo> materials = session
+                        .Query<MaterialDbo>()
+                        .Where(expression)
+                        .Select(m => m)
+                        .ToList();
 
-                return materials;
+                    return materials;
+                }
             }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            
         }
     }
 }
