@@ -9,10 +9,10 @@ namespace CK.Lum.Material.Data.RavenDb.Models
     public class MaterialDbo : DbEntity
     {
         public string Name { get; set; }
-        public bool? IsVisible { get; private set; }
+        public bool? IsVisible { get; set; }
 
-        public string TypeOfPhase { get; private set; }
+        public string TypeOfPhase { get; set; }
 
-        public MaterialFunctionDbo MaterialFunction { get; private set; }
+        public MaterialFunctionDbo MaterialFunction { get; set; }
     }
 }

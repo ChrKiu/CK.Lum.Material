@@ -5,8 +5,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CK.Lum.Material.Data.RavenDb
 {
@@ -36,10 +34,22 @@ namespace CK.Lum.Material.Data.RavenDb
             _store = store.Initialize();
         }
 
-        //public MaterialDbo UpdateMaterial()
-        //{
+        public MaterialDbo UpdateMaterial(MaterialDbo material)
+        {
+            using (var session = _store.OpenSession())
+            {
+                var dbMaterial = session.Load<MaterialDbo>(material.Id);
 
-        //}
+                dbMaterial.IsVisible = material.IsVisible;
+                dbMaterial.MaterialFunction = material.MaterialFunction;
+                dbMaterial.Name = material.Name;
+                dbMaterial.TypeOfPhase = material.TypeOfPhase;
+
+                session.SaveChanges();
+
+                return dbMaterial;
+            }
+        }
 
         public bool DeleteMaterial(string id)
         {
@@ -70,7 +80,6 @@ namespace CK.Lum.Material.Data.RavenDb
                 session.Store(material);                            
 
                 session.SaveChanges();
-
             }
 
             return material;

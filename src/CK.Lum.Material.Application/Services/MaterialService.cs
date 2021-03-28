@@ -52,9 +52,15 @@ namespace CK.Lum.Material.Application.Services
         }
 
         ///<inheritdoc/>
-        MaterialModel IMaterialService.UpdateMaterial(string id, string name, bool? isVisibile, string typeOfPhase, int? minTemperature, int? maxTemperature)
+        MaterialModel IMaterialService.UpdateMaterial(string id, string name, bool? isVisibile, string? typeOfPhase, int? minTemperature, int? maxTemperature)
         {
-            throw new NotImplementedException();
+            _materialBuilder.SetMaterialName(name);
+            _materialBuilder.SetVisibility(isVisibile);
+            _materialBuilder.SetTypeOfPhase(typeOfPhase);
+            _materialBuilder.SetMaterialFunction(maxTemperature, minTemperature);
+            var buildMaterial = _materialBuilder.BuildMaterial();
+
+            return _materialRepository.Update(buildMaterial);
         }
     }
 }
