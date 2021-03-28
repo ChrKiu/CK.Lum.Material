@@ -20,15 +20,20 @@ namespace CK.Lum.Material.Application.Services
         }
 
         ///<inheritdoc/>
-        MaterialModel IMaterialService.CreateMaterial(string name, bool? isVisibile, string typeOfPhase, int? minTemperature, int? maxTemperature)
+        (MaterialModel material, IEnumerable<string> errorMessages) IMaterialService.CreateMaterial(string name, bool? isVisibile, string typeOfPhase, int? minTemperature, int? maxTemperature)
         {
             _materialBuilder.SetMaterialName(name);
             _materialBuilder.SetVisibility(isVisibile);
             _materialBuilder.SetTypeOfPhase(typeOfPhase);
             _materialBuilder.SetMaterialFunction(maxTemperature, minTemperature);
-            var buildMaterial = _materialBuilder.BuildMaterial();
+            var builderResult = _materialBuilder.BuildMaterial();
 
-            return _materialRepository.Create(buildMaterial);
+            if(builderResult.IsValid)
+            {
+                return (_materialRepository.Create(builderResult.Material), new List<string>());
+            }
+
+            return (builderResult.Material, builderResult.ErrorMessages);
         }
 
         ///<inheritdoc/>
@@ -52,15 +57,21 @@ namespace CK.Lum.Material.Application.Services
         }
 
         ///<inheritdoc/>
-        MaterialModel IMaterialService.UpdateMaterial(string id, string name, bool? isVisibile, string? typeOfPhase, int? minTemperature, int? maxTemperature)
+        (MaterialModel material, IEnumerable<string> errorMessages) IMaterialService.UpdateMaterial(string id, string name, bool? isVisibile, string? typeOfPhase, int? minTemperature, int? maxTemperature)
         {
             _materialBuilder.SetMaterialName(name);
             _materialBuilder.SetVisibility(isVisibile);
             _materialBuilder.SetTypeOfPhase(typeOfPhase);
             _materialBuilder.SetMaterialFunction(maxTemperature, minTemperature);
-            var buildMaterial = _materialBuilder.BuildMaterial();
+            var builderResult = _materialBuilder.BuildMaterial();
 
-            return _materialRepository.Update(buildMaterial);
+            if (builderResult.IsValid)
+            {
+                return (_materialRepository.Update(builderResult.Material), new List<string>());
+            }
+
+            return (builderResult.Material, builderResult.ErrorMessages);
         }
+
     }
 }

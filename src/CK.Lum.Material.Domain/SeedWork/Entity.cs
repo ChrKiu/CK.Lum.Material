@@ -10,6 +10,8 @@ namespace CK.Lum.Material.Domain.SeedWork
     {
         public virtual string Id { get; set; }
 
+        private int? _requestedHashCode;
+
         public bool IsTransient()
         {
             return this.Id == default;
@@ -40,6 +42,23 @@ namespace CK.Lum.Material.Domain.SeedWork
             }
 
             return item.Id == this.Id;
+        }
+
+        public override int GetHashCode()
+        {
+            if (!this.IsTransient())
+            {
+                if (!this._requestedHashCode.HasValue)
+                {
+                    this._requestedHashCode =
+                        this.Id.GetHashCode()
+                        ^ 31; // XOR for random distribution (http://blogs.msdn.com/b/ericlippert/archive/2011/02/28/guidelines-and-rules-for-gethashcode.aspx)
+                }
+
+                return this._requestedHashCode.Value;
+            }
+
+            return base.GetHashCode();
         }
     }
 }

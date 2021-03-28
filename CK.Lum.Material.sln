@@ -5,13 +5,18 @@ VisualStudioVersion = 16.0.31112.23
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CK.Lum.Material.Api", "src\CK.Lum.Material.Api\CK.Lum.Material.Api.csproj", "{B6020DF5-15C2-476C-9B68-C5DA92E4C308}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CK.Lum.Material.Application", "src\CK.Lum.Material.Application\CK.Lum.Material.Application.csproj", "{7B47A063-599C-4766-82F3-1C58B25C9D89}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CK.Lum.Material.Application", "src\CK.Lum.Material.Application\CK.Lum.Material.Application.csproj", "{7B47A063-599C-4766-82F3-1C58B25C9D89}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CK.Lum.Material.Data", "src\CK.Lum.Material.Data\CK.Lum.Material.Data.csproj", "{A4039721-9E39-4A17-9C4D-D14303F74AAE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CK.Lum.Material.Data", "src\CK.Lum.Material.Data\CK.Lum.Material.Data.csproj", "{A4039721-9E39-4A17-9C4D-D14303F74AAE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CK.Lum.Material.Domain", "src\CK.Lum.Material.Domain\CK.Lum.Material.Domain.csproj", "{68A2714F-9868-4BC2-80EF-3925FA8937CC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CK.Lum.Material.Domain", "src\CK.Lum.Material.Domain\CK.Lum.Material.Domain.csproj", "{68A2714F-9868-4BC2-80EF-3925FA8937CC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CK.Lum.Material.Api.Transport", "src\CK.Lum.Material.Api.Transport\CK.Lum.Material.Api.Transport.csproj", "{0A8535C7-1ADB-4FFE-BEFA-0AB8DD9AF7E6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CK.Lum.Material.Api.Transport", "src\CK.Lum.Material.Api.Transport\CK.Lum.Material.Api.Transport.csproj", "{0A8535C7-1ADB-4FFE-BEFA-0AB8DD9AF7E6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C56EACC8-C758-4B1A-B6A5-65ACE91F9C13}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

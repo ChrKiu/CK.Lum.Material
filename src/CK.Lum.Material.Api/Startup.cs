@@ -34,6 +34,8 @@ namespace CK.Lum.Material.Api
 
             services.ConfigureConfigurations();
 
+            services.ConfigureValidators();
+
             services.ConfigureRepositories();
             services.ConfigureMapper();
             services.ConfigureDbContexts();

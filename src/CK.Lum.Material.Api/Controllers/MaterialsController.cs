@@ -51,9 +51,16 @@ namespace CK.Lum.Material.Api.Controllers
         [HttpPost]        
         public IActionResult UploadMaterial([FromBody] MaterialDto material)
         {
-            var createdMaterial = _materialService.CreateMaterial(material.Name, material.IsVisible, material.TypeOfPhase, material.MaterialFunction.MinTemperature, material.MaterialFunction.MaxTemperature);
-            var materialDto = createdMaterial.MapToMaterialDto();
-            return Ok(materialDto);
+            var creationResult = _materialService.CreateMaterial(material.Name, material.IsVisible, material.TypeOfPhase, material.MaterialFunction.MinTemperature, material.MaterialFunction.MaxTemperature);
+
+            if(creationResult.errorMessages.Any())
+            {
+                return UnprocessableEntity(creationResult.errorMessages);
+            } else
+            {
+                var materialDto = creationResult.material.MapToMaterialDto();
+                return Ok(materialDto);
+            }
         }
 
         /// <summary>
@@ -64,9 +71,16 @@ namespace CK.Lum.Material.Api.Controllers
         [HttpPut("{id}")]
         public IActionResult UpdateMaterial(string id, [FromBody] MaterialDto material)
         {
-            var updatedMaterial = _materialService.UpdateMaterial(id, material.Name, material.IsVisible, material.TypeOfPhase, material.MaterialFunction.MinTemperature, material.MaterialFunction.MaxTemperature);
-            var materialDto = updatedMaterial.MapToMaterialDto();
-            return Ok(materialDto);
+            var updateResult = _materialService.UpdateMaterial(id, material.Name, material.IsVisible, material.TypeOfPhase, material.MaterialFunction.MinTemperature, material.MaterialFunction.MaxTemperature);
+            if (updateResult.errorMessages.Any())
+            {
+                return UnprocessableEntity(updateResult.errorMessages);
+            }
+            else
+            {
+                var materialDto = updateResult.material.MapToMaterialDto();
+                return Ok(materialDto);
+            }
         }
 
         /// <summary>

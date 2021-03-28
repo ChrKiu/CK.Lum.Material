@@ -35,8 +35,8 @@ namespace CK.Lum.Material.Application.Interfaces
         /// <param name="typeOfPhase">The type of the phase of the material</param>
         /// <param name="minTemperature">The min temperature of the material</param>
         /// <param name="maxTemperature">The max temperature of the material</param>
-        /// <returns>The created <see cref="Domain.Models.MaterialAggregate.Material"/></returns>
-        public MaterialModel CreateMaterial(string name, bool? isVisibile, string? typeOfPhase, int? minTemperature, int? maxTemperature);
+        /// <returns>The created <see cref="Domain.Models.MaterialAggregate.Material"/> or error messages</returns>
+        public (MaterialModel material, IEnumerable<string> errorMessages) CreateMaterial(string name, bool? isVisibile, string? typeOfPhase, int? minTemperature, int? maxTemperature);
 
         /// <summary>
         /// Updates a new <see cref="Domain.Models.MaterialAggregate.Material"/>
@@ -47,8 +47,8 @@ namespace CK.Lum.Material.Application.Interfaces
         /// <param name="typeOfPhase">The type of the phase of the material</param>
         /// <param name="minTemperature">The min temperature of the material</param>
         /// <param name="maxTemperature">The max temperature of the material</param>
-        /// <returns>The updated <see cref="Domain.Models.MaterialAggregate.Material"/></returns>
-        public MaterialModel UpdateMaterial(string id, string? name, bool? isVisibile, string? typeOfPhase, int? minTemperature, int? maxTemperature);
+        /// <returns>The updated <see cref="Domain.Models.MaterialAggregate.Material"/> or error messages</returns>
+        public (MaterialModel material, IEnumerable<string> errorMessages) UpdateMaterial(string id, string? name, bool? isVisibile, string? typeOfPhase, int? minTemperature, int? maxTemperature);
 
         /// <summary>
         /// Deletes a <see cref="Domain.Models.MaterialAggregate.Material"/> by it's ID

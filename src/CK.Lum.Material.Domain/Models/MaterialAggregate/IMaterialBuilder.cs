@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CK.Lum.Material.Domain.Builder;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,6 +25,6 @@ namespace CK.Lum.Material.Domain.Models.MaterialAggregate
 
         void SetVisibility(bool? isVisible);
 
-        Material BuildMaterial();
+        MaterialBuilderResult BuildMaterial();
     }
 }

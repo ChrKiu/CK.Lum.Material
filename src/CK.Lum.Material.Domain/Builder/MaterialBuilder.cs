@@ -1,11 +1,15 @@
 ﻿using CK.Lum.Material.Domain.Models;
 using CK.Lum.Material.Domain.Models.MaterialAggregate;
+using CK.Lum.Material.Domain.Validator;
 using System;
+using System.Collections.Generic;
 
 namespace CK.Lum.Material.Domain.Builder
 {
     public class MaterialBuilder : IMaterialBuilder
     {
+        private readonly MaterialValidator _materialValidator;
+
         public string Name { get; private set; }
 
         public bool? IsVisible { get; private set; }
@@ -14,12 +18,34 @@ namespace CK.Lum.Material.Domain.Builder
 
         public MaterialFunction? MaterialFunction { get; private set; }
 
-        public Models.MaterialAggregate.Material BuildMaterial()
+        public MaterialBuilder(MaterialValidator materialValidator)
+        {
+            _materialValidator = materialValidator ?? throw new ArgumentNullException(nameof(materialValidator));
+        }
+
+        public MaterialBuilderResult BuildMaterial()
         {
             var createdMaterial = Material.Domain.Models.MaterialAggregate.Material.CreateMaterial(Name, IsVisible, TypeOfPhase, MaterialFunction);
-            CleanUp();
+            var result = _materialValidator.Validate(createdMaterial);
 
-            return createdMaterial;
+            var builderResult = new MaterialBuilderResult();
+            builderResult.IsValid = result.IsValid;
+            
+            if (result.IsValid)
+            {
+                builderResult.Material = createdMaterial;
+            }
+
+            var errorMessages = new List<string>();
+            foreach (var failure in result.Errors)
+            {
+                errorMessages.Add(failure.ErrorMessage);
+            }
+
+            builderResult.ErrorMessages = errorMessages;
+
+            CleanUp();
+            return builderResult;
         }
 
         public void SetMaterialFunction(int? maxTemperature, int? minTemperature)

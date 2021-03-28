@@ -6,6 +6,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="..\..\.editorconfig" Link=".editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\CK.Lum.Material.Api.Transport\CK.Lum.Material.Api.Transport.csproj" />
     <ProjectReference Include="..\CK.Lum.Material.Application\CK.Lum.Material.Application.csproj" />
     <ProjectReference Include="..\CK.Lum.Material.Data\CK.Lum.Material.Data.csproj" />
