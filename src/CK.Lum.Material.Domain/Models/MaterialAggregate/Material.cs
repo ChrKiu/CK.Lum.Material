@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CK.Lum.Material.Domain.SeedWork;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CK.Lum.Material.Domain.Models.MaterialAggregate
 {
-    public class Material
+    public class Material : Entity
     {
         public string Name { get; private set; }
 
