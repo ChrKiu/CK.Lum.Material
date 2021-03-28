@@ -16,6 +16,7 @@ Returns Http 200 on Success with a material
 
 ##Create a Material
 Material Data must be added in the POST-Body as Json in the form of:
+```
 {
     "id": "<id>",
     "name": "<name>",
@@ -26,6 +27,7 @@ Material Data must be added in the POST-Body as Json in the form of:
         "maxTemperature": <number>
     }
 }
+```
 
 Empty values will be ignored by the server
 ```
@@ -36,6 +38,7 @@ Returns Http 422 on Failure when the server validates the input as invalid
 
 ##Update a Material
 Material Data must be added in the PUT-Body as Json in the form of:
+```
 {
     "id": "<id>",
     "name": "<name>",
@@ -46,6 +49,7 @@ Material Data must be added in the PUT-Body as Json in the form of:
         "maxTemperature": <number>
     }
 }
+```
 Every value which has no value is considered to be a change for removing the content. To just change one value, all other values have to be entered too
 ```
 PUT /material/{id}
